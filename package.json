@@ -1,0 +1,30 @@
+{
+  "name": "turborepo-tailwind-prisma-nextjs-starter",
+  "version": "1.0.0",
+  "description": "Turborepo starter with Tailwind CSS and Prisma",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "clean": "turbo clean",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "db:migrate:deploy": "turbo run db:migrate:deploy",
+    "db:push": "turbo run db:push",
+    "db:seed": "turbo run db:seed",
+    "generate": "turbo run generate"
+  },
+  "prisma": {
+    "schema": "packages/database/prisma/schema.prisma",
+    "seed": "tsx packages/database/src/seed.ts"
+  },
+  "packageManager": "pnpm@7.15.0",
+  "dependencies": {
+    "@manypkg/cli": "^0.20.0",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "1.0.0",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "turbo": "^1.9.8"
+  }
+}
