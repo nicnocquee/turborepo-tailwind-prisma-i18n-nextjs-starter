@@ -25,6 +25,6 @@
     "eslint-config-custom": "1.0.0",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.1.13",
-    "turbo": "^1.9.8"
+    "turbo": "^1.9.9"
   }
 }
