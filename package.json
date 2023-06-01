@@ -1,7 +1,7 @@
 {
-  "name": "turborepo-tailwind-prisma-nextjs-starter",
+  "name": "turborepo-tailwind-prisma-i18n-nextjs-starter",
   "version": "1.0.0",
-  "description": "Turborepo starter with Tailwind CSS and Prisma",
+  "description": "Turborepo starter with Tailwind CSS, Prisma, and i18next",
   "private": true,
   "scripts": {
     "build": "turbo build",
