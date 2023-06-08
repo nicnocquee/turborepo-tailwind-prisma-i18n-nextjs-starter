@@ -17,12 +17,13 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^12.3.1",
-    "ui": "*"
+    "ui": "*",
+    "i18n": "*"
   },
   "devDependencies": {
     "@prisma/nextjs-monorepo-workaround-plugin": "^4.14.1",
     "@types/node": "^18.11.17",
-    "@types/react": "^18.2.5",
+    "@types/react": "^18.2.9",
     "@types/react-dom": "^18.2.4",
     "autoprefixer": "^10.4.13",
     "eslint-config-custom": "*",
@@ -30,6 +31,6 @@
     "tailwind-config": "*",
     "tailwindcss": "^3.2.4",
     "tsconfig": "*",
-    "typescript": "^4.9.4"
+    "typescript": "^5.1.3"
   }
 }

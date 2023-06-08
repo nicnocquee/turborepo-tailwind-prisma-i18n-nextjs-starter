@@ -24,3 +24,8 @@ done
 
 cd "$packages_dir/database"
 ln -s "../../$packages_dir/env/.env" ".env"
+
+cd -
+
+cd "$packages_dir/i18next"
+ln -s "../../$packages_dir/env/.env" ".env"
