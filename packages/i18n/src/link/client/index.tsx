@@ -9,12 +9,14 @@ const ClientLink = ({
   href,
   prefetch,
   replace,
+  className,
   ...rest
 }: {
   href: string;
   children: ReactNode;
   prefetch?: boolean;
   replace?: boolean;
+  className?: string;
 }) => {
   const { lng } = useParams();
   return (
@@ -22,6 +24,7 @@ const ClientLink = ({
       href={`/${lng}${href}`}
       prefetch={prefetch}
       replace={replace}
+      className={className}
       {...rest}
     >
       {children}

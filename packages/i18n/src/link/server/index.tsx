@@ -7,6 +7,7 @@ const ServerLink = ({
   href,
   prefetch,
   replace,
+  className,
   ...rest
 }: {
   lng: string;
@@ -14,12 +15,14 @@ const ServerLink = ({
   children: ReactNode;
   prefetch?: boolean;
   replace?: boolean;
+  className?: string;
 }) => {
   return (
     <Link
       href={`/${lng}${href}`}
       prefetch={prefetch}
       replace={replace}
+      className={className}
       {...rest}
     >
       {children}
