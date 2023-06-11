@@ -1,16 +1,28 @@
-import Link from "next/link";
 import { useTranslation } from "i18n";
+import Link from "i18n/link/server";
 import { Footer } from "./components/Footer";
 
 export default async function Page({ params: { lng } }) {
   const { t } = await useTranslation(lng);
 
   return (
-    <>
-      <h1>{t("title")}</h1>
-      <Link href={`/${lng}/second-page`}>{t("to-second-page")}</Link>
-      <Link href={`/${lng}/client-page`}>{t("to-client-page")}</Link>
+    <div className="flex flex-col">
+      <h1 className="text-5xl font-extrabold">{t("title")}</h1>
+      <Link
+        lng={lng}
+        href={`/second-page`}
+        className="underline text-brandblue"
+      >
+        {t("to-second-page")}
+      </Link>
+      <Link
+        lng={lng}
+        href={`/client-page`}
+        className="underline text-brandblue"
+      >
+        {t("to-client-page")}
+      </Link>
       <Footer lng={lng} />
-    </>
+    </div>
   );
 }

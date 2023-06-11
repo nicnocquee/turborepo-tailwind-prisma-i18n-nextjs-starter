@@ -1,3 +1,7 @@
+import "../../styles/globals.css";
+// include styles from the ui package
+import "ui/styles.css";
+
 import { dir } from "i18next";
 import { languages } from "i18n/settings";
 

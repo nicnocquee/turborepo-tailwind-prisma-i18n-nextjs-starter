@@ -1,10 +1,10 @@
-import Link from "next/link";
+import Link from "i18n/link/server";
 import { Trans } from "react-i18next/TransWithoutContext";
 import { languages } from "i18n/settings";
 
 export const FooterBase = ({ t, lng }: { t: any; lng: string }) => {
   return (
-    <footer style={{ marginTop: 50 }}>
+    <footer className="mt-40">
       <Trans i18nKey="languageSwitcher" t={t}>
         {/* @ts-ignore */}
         Switch from <strong>{{ lng }}</strong> to:{" "}
@@ -15,7 +15,9 @@ export const FooterBase = ({ t, lng }: { t: any; lng: string }) => {
           return (
             <span key={l}>
               {index > 0 && " or "}
-              <Link href={`/${l}`}>{l}</Link>
+              <Link lng={l} className="underline text-brandblue" href={`/`}>
+                {l}
+              </Link>
             </span>
           );
         })}
