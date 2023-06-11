@@ -1,8 +1,8 @@
-# Turborepo Tailwind Prisma Starter
+# Turborepo Tailwind Prisma i18next Starter
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/nicnocquee/turborepo-tailwind-prisma-nextjs-starter/ci.yml)
+[![GitHub Workflow Status](https://github.com/nicnocquee/turborepo-tailwind-prisma-i18n-nextjs-starter/actions/workflows/ci.yml/badge.svg)](https://github.com/nicnocquee/turborepo-tailwind-prisma-i18n-nextjs-starter/actions/workflows/ci.yml)
 
-This a [Turborepo monorepo](https://turbo.build/repo/docs) starter that uses Tailwind and Prisma. It also uses a type-safe shared environment variables.
+This a [Turborepo monorepo](https://turbo.build/repo/docs) starter that uses Tailwind, Prisma, and i18next. It also uses a type-safe shared environment variables. If you don't need the i18next, you can check out the [turborepo-tailwind-prisma-nextjs-starter](https://github.com/nicnocquee/turborepo-tailwind-prisma-nextjs-starter).
 
 # Requirements
 
@@ -34,6 +34,7 @@ This Turborepo includes the following packages/apps:
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo.
 - `database`: the schema and client of Prisma used by both `web` and `docs` applications.
 - `env`: the typed safe environment variables used throught the monorepo using [t3-env](https://github.com/t3-oss/t3-env).
+- `i18n`: the code and translations for the internationalization used in the `web` application.
 
 Notes:
 
@@ -51,6 +52,7 @@ This Turborepo has some additional tools already setup for you:
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
 - [Prisma](https://www.prisma.io/) for database ORM
+- [Next-i18next](https://github.com/i18next/next-i18next) for internationalization.
 
 ### Environment Variables
 
@@ -72,6 +74,32 @@ Notes:
 - Use `env.NEXT_PUBLIC_<name>` if you want to read the variable from a Client component. If you read a `env.<name>` variable from a Client component, you'll get error.
 - If you make changes to server environment variables or the client environment variables, you need to edit the `packages/env/src/index.ts` file too.
 
+### Internationalization
+
+To add support for multiple languages in any Next.js apps in the `apps` directory,
+
+1. you need to use `[lng]` [route param](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes).
+2. Call `useTranslation` in the page's server component.
+
+   ```typescript
+   // import useTranslation from our local i18n package
+   import { useTranslation } from "i18n";
+
+   // with `client-page` namespace
+   const { t } = await useTranslation(lng, "client-page");
+
+   // or without the namespace
+   const { t } = await useTranslation(lng);
+   ```
+
+3. Call `t("to-second-page")` to get translated strings.
+
+Notes:
+
+- The translation strings are stored in the `public/locales/de`, `public/locales/en`, and `public/locales/it` directories.
+- To change the settings for i18next, edit the `packages/i18n/src/settings/index.ts` file.
+- More information about using i18next with Next.js App Route can be found in [18next guide](https://locize.com/blog/next-13-app-dir-i18n/).
+
 ## How to
 
 - Add new workspace: `turbo gen workspace`
@@ -80,4 +108,5 @@ Notes:
 
 ## Troubleshoting
 
-- VSCode shows error: `Cannot find module 'ui' or its corresponding type declarations.ts(2307)` or for any modules, restart the TS Server: Press Cmd+P then type `restart ts`, then Enter to restart the typescript server.
+- If VSCode shows error: `Cannot find module 'ui' or its corresponding type declarations.ts(2307)` or for any modules, restart the TS Server: Press `Cmd+Shift+P` then type `restart ts`, then Enter to restart the typescript server. For convenience, I changed the keyboard shortcut in VSCode to restart the TypeScript server to `Cmd+shift+§`.
+- If VSCode shows error `Type 'Promise<Element>' is missing the following properties from type 'ReactElement<any, any>': type, props, key` errors, you need to use the TypeScript version in the workspace. Press `Cmd+Shift+P`, then type `Select TypeScript version..`, then select `Use Workspace version` which is the version 5.1.3 as of this writing.
