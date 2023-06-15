@@ -9,16 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "database": "*",
-    "env": "*",
-    "i18n": "*",
+    "database": "workspace:*",
+    "env": "workspace:*",
+    "i18n": "workspace:*",
     "i18next": "^22.5.0",
     "next": "^13.4.1",
     "next-i18next": "^13.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^12.3.1",
-    "ui": "*"
+    "ui": "workspace:*"
   },
   "devDependencies": {
     "@prisma/nextjs-monorepo-workaround-plugin": "^4.14.1",
@@ -27,7 +27,7 @@
     "@types/react-dom": "^18.2.4",
     "autoprefixer": "^10.4.13",
     "eslint-config-custom": "*",
-    "postcss": "^8.4.20",
+    "postcss": "^8.4.21",
     "tailwind-config": "*",
     "tailwindcss": "^3.2.4",
     "tsconfig": "*",

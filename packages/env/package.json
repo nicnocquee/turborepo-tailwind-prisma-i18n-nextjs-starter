@@ -24,7 +24,7 @@
     "dotenv-cli": "^7.2.1",
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
-    "postcss": "^8.4.20",
+    "postcss": "^8.4.21",
     "tsconfig": "*",
     "tsup": "^6.7.0",
     "typescript": "^5.1.3"
