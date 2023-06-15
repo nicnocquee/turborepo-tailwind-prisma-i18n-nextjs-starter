@@ -30,23 +30,18 @@ i18next
     },
   });
 
-const runsOnServerSide = typeof window === "undefined";
-
 export function useTranslation(
   lng: string,
   ns: string | string[] = defaultNS,
   options: any = {}
 ) {
-  const ret = useTranslationOrg(ns, options);
+  const ret = useTranslationOrg(ns, { ...options, lng });
   const { i18n } = ret;
-  if (runsOnServerSide && i18n.resolvedLanguage !== lng) {
+
+  useEffect(() => {
+    if (i18n.resolvedLanguage === lng) return;
     i18n.changeLanguage(lng);
-  } else {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
-      if (i18n.resolvedLanguage === lng) return;
-      i18n.changeLanguage(lng);
-    }, [lng, i18n]);
-  }
+  }, [lng, i18n]);
+
   return ret;
 }
