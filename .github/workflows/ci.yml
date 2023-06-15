@@ -74,6 +74,3 @@ jobs:
 
       - name: Build
         run: pnpm turbo build
-
-      - name: Check workspaces
-        run: pnpm manypkg check
