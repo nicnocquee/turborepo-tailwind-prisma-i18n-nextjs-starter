@@ -3,7 +3,7 @@ import resourcesToBackend from "i18next-resources-to-backend";
 import { initReactI18next } from "react-i18next/initReactI18next";
 import { defaultNS, getOptions } from "./settings";
 
-const initI18next = async (lng: string, ns: string) => {
+const initI18next = async (lng: string, ns: string | string[]) => {
   // on server side we create a new instance for each render, because during compilation everything seems to be executed in parallel
   const i18nInstance = createInstance();
   await i18nInstance
@@ -23,7 +23,10 @@ export async function useTranslation(
   ns: string | string[] = defaultNS,
   options: any = {}
 ) {
-  const namespace = Array.isArray(ns) ? ns[0] : ns;
+  // add the default namespace if not passed in the parameter
+  const namespace = Array.isArray(ns)
+    ? Array.from(new Set([...ns, defaultNS]))
+    : ns;
   const i18nextInstance = await initI18next(lng, namespace);
   return {
     t: i18nextInstance.getFixedT(lng, namespace, options.keyPrefix),
