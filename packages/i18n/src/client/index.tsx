@@ -9,7 +9,9 @@ import {
 import resourcesToBackend from "i18next-resources-to-backend";
 // import LocizeBackend from 'i18next-locize-backend'
 import LanguageDetector from "i18next-browser-languagedetector";
-import { defaultNS, getOptions } from "../settings";
+import { defaultNS, getOptions, languages } from "../settings";
+
+const runsOnServerSide = typeof window === "undefined";
 
 // on client side the normal singleton is ok
 i18next
@@ -28,6 +30,7 @@ i18next
     detection: {
       order: ["path", "htmlTag", "cookie", "navigator"],
     },
+    preload: runsOnServerSide ? languages : [],
   });
 
 export function useTranslation(
@@ -35,13 +38,16 @@ export function useTranslation(
   ns: string | string[] = defaultNS,
   options: any = {}
 ) {
-  const ret = useTranslationOrg(ns, { ...options, lng });
+  const ret = useTranslationOrg(ns, options);
   const { i18n } = ret;
-
-  useEffect(() => {
-    if (i18n.resolvedLanguage === lng) return;
+  if (runsOnServerSide && i18n.resolvedLanguage !== lng) {
     i18n.changeLanguage(lng);
-  }, [lng, i18n]);
-
+  } else {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+      if (i18n.resolvedLanguage === lng) return;
+      i18n.changeLanguage(lng);
+    }, [lng, i18n]);
+  }
   return ret;
 }

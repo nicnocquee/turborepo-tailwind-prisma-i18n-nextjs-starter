@@ -1,18 +1,9 @@
 "use client";
 
-import { Suspense } from "react";
 import { FooterBase } from "./FooterBase";
 import { useTranslation } from "i18n/client";
 
-export const Footer = ({ lng }) => {
-  return (
-    <Suspense fallback="loading">
-      <FooterWithTranslation lng={lng} />
-    </Suspense>
-  );
-};
-
-const FooterWithTranslation = ({ lng }) => {
+export const Footer = ({ lng, path }) => {
   const { t } = useTranslation(lng, "footer");
-  return <FooterBase t={t} lng={lng} />;
+  return <FooterBase t={t} lng={lng} path={path} />;
 };
