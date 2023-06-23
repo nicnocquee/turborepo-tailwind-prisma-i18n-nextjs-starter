@@ -18,7 +18,7 @@ This a [Turborepo monorepo](https://turbo.build/repo/docs) starter that uses Tai
 - Run `cp packages/env/.env.example packages/env/.env && ./dev-bootstrap.sh` to set up the environment variables
 - Run `docker-compose up` to run the Postgres database
 - Open a new terminal tab then run `cd packages/database/ && pnpm db:migrate:reset`. You only need to do this once.
-- Back to the root directory then run `turbo run dev`
+- **Back to the root directory** then run `pnpm run dev`
 - Open in browser http://localhost:3000 for the `web` Next.js app and http://localhost:3001 for the `docs` Next.js app.
 
 ## What's inside?
