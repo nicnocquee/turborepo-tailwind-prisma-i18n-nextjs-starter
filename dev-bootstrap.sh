@@ -27,5 +27,5 @@ ln -s "../../$packages_dir/env/.env" ".env"
 
 cd -
 
-cd "$packages_dir/i18next"
+cd "$packages_dir/i18n"
 ln -s "../../$packages_dir/env/.env" ".env"
