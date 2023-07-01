@@ -1,11 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslation } from "i18n/client";
-import Link from "i18n/link/client";
+import { useClientTranslation, ClientLink as Link } from "internationalization";
 
 export default function Counter({ lng }: { lng: string }) {
-  const { t } = useTranslation(lng, "client-page");
+  const { t } = useClientTranslation(lng, "client-page");
 
   const [counter, setCounter] = useState(0);
   return (

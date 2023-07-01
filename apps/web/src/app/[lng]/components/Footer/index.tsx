@@ -1,7 +1,7 @@
-import { useTranslation } from "i18n";
+import { useServerTranslation } from "internationalization";
 import { FooterBase } from "./FooterBase";
 
 export const Footer = async ({ lng }: { lng: string }) => {
-  const { t } = await useTranslation(lng, "footer");
+  const { t } = await useServerTranslation(lng, "footer");
   return <FooterBase t={t} lng={lng} />;
 };

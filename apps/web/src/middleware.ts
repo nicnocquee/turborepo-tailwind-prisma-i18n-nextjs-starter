@@ -1,1 +1,1 @@
-export * from "i18n/middleware";
+export { middleware } from "internationalization";

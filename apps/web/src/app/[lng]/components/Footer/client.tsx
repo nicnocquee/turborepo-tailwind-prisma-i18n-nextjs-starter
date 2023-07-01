@@ -1,9 +1,9 @@
 "use client";
 
 import { FooterBase } from "./FooterBase";
-import { useTranslation } from "i18n/client";
+import { useClientTranslation } from "internationalization";
 
 export const Footer = ({ lng }: { lng: string }) => {
-  const { t } = useTranslation(lng, "footer");
+  const { t } = useClientTranslation(lng, "footer");
   return <FooterBase t={t} lng={lng} />;
 };

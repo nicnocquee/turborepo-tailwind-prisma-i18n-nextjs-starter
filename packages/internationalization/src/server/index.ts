@@ -1,7 +1,7 @@
 import { createInstance } from "i18next";
 import resourcesToBackend from "i18next-resources-to-backend";
 import { initReactI18next } from "react-i18next/initReactI18next";
-import { defaultNS, getOptions } from "./settings";
+import { defaultNS, getOptions } from "../settings";
 
 const initI18next = async (lng: string, ns: string | string[]) => {
   // on server side we create a new instance for each render, because during compilation everything seems to be executed in parallel
@@ -11,14 +11,14 @@ const initI18next = async (lng: string, ns: string | string[]) => {
     .use(
       resourcesToBackend(
         (language: string, namespace: string) =>
-          import(`./locales/${language}/${namespace}.json`)
+          import(`../../public/locales/${language}/${namespace}.json`)
       )
     )
     .init(getOptions(lng, ns));
   return i18nInstance;
 };
 
-export async function useTranslation(
+export async function useServerTranslation(
   lng: string,
   ns: string | string[] = defaultNS,
   options: any = {}
@@ -33,3 +33,5 @@ export async function useTranslation(
     i18n: i18nextInstance,
   };
 }
+
+export type TFuncType = Awaited<ReturnType<typeof useServerTranslation>>["t"];

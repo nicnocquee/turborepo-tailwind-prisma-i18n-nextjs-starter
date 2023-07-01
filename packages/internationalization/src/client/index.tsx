@@ -13,31 +13,41 @@ import { defaultNS, getOptions, languages } from "../settings";
 
 const runsOnServerSide = typeof window === "undefined";
 
-// on client side the normal singleton is ok
-i18next
-  .use(initReactI18next)
-  .use(LanguageDetector)
-  .use(
-    resourcesToBackend(
-      (language: string, namespace: string) =>
-        import(`../locales/${language}/${namespace}.json`)
-    )
-  )
-  // .use(LocizeBackend) // locize backend could be used on client side, but prefer to keep it in sync with server side
-  .init({
-    ...getOptions(),
-    lng: undefined, // let detect the language on client side
-    detection: {
-      order: ["path", "htmlTag", "cookie", "navigator"],
-    },
-    preload: runsOnServerSide ? languages : [],
-  });
+let hasInit = false;
 
-export function useTranslation(
+const initialize = () => {
+  if (hasInit) {
+    return;
+  }
+  hasInit = true;
+
+  // on client side the normal singleton is ok
+  i18next
+    .use(initReactI18next)
+    .use(LanguageDetector)
+    .use(
+      resourcesToBackend(
+        (language: string, namespace: string) =>
+          import(`../../public/locales/${language}/${namespace}.json`)
+      )
+    )
+    // .use(LocizeBackend) // locize backend could be used on client side, but prefer to keep it in sync with server side
+    .init({
+      ...getOptions(),
+      lng: undefined, // let detect the language on client side
+      detection: {
+        order: ["path", "htmlTag", "cookie", "navigator"],
+      },
+      preload: runsOnServerSide ? languages : [],
+    });
+};
+
+export function useClientTranslation(
   lng: string,
   ns: string | string[] = defaultNS,
   options: any = {}
 ) {
+  initialize();
   const ret = useTranslationOrg(ns, options);
   const { i18n } = ret;
   if (runsOnServerSide && i18n.resolvedLanguage !== lng) {

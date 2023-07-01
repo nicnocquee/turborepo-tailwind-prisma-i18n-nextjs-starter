@@ -1,8 +1,7 @@
-import Link from "i18n/link/server";
-import { useTranslation } from "i18n";
+import { useServerTranslation, ServerLink as Link } from "internationalization";
 
 export default async function Page({ params: { lng } }) {
-  const { t } = await useTranslation(lng, ["second-page"]);
+  const { t } = await useServerTranslation(lng, ["second-page"]);
   return (
     <>
       <h1>{t("title")}</h1>

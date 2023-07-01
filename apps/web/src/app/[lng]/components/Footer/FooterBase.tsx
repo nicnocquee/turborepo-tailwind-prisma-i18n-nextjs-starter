@@ -1,6 +1,5 @@
-import Link from "i18n/link/server";
 import { Trans } from "react-i18next/TransWithoutContext";
-import { languages } from "i18n/settings";
+import { ServerLink as Link, languages } from "internationalization";
 
 export const FooterBase = ({ t, lng }: { t: any; lng: string }) => {
   return (

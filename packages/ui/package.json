@@ -1,35 +1,31 @@
 {
   "name": "ui",
   "version": "1.0.0",
-  "sideEffects": [
-    "**/*.css"
-  ],
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": "./dist",
-    "./styles.css": "./dist/index.css"
-  },
+  "main": "./src/index.tsx",
+  "types": "./src/index.tsx",
   "license": "MIT",
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "env": "workspace:*"
-  },
-  "peerDependencies": {
-    "react": "^18.2.0"
+    "@headlessui/react": "^1.7.14",
+    "@heroicons/react": "^2.0.17",
+    "clsx": "^1.1.1",
+    "env": "workspace:*",
+    "next": "canary",
+    "react-dom": "latest",
+    "react": "latest"
   },
   "devDependencies": {
     "@types/react": "^18.2.9",
+    "@types/react-dom": "^18.2.6",
     "eslint": "^7.32.0",
-    "eslint-config-custom": "*",
+    "eslint-config-custom": "workspace:*",
     "postcss": "^8.4.21",
     "react": "^18.2.0",
-    "tailwind-config": "*",
-    "tsconfig": "*",
-    "tsup": "^6.7.0",
+    "tailwind-config": "workspace:*",
+    "tsconfig": "workspace:*",
     "typescript": "^5.1.3"
   }
 }

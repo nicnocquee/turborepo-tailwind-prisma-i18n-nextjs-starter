@@ -1,8 +1,10 @@
+"use client";
+
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { ReactNode } from "react";
 
-const ServerLink = ({
-  lng,
+export const ClientLink = ({
   children,
   href,
   prefetch,
@@ -10,13 +12,13 @@ const ServerLink = ({
   className,
   ...rest
 }: {
-  lng: string;
   href: string;
   children: ReactNode;
   prefetch?: boolean;
   replace?: boolean;
   className?: string;
 }) => {
+  const { lng } = useParams();
   return (
     <Link
       href={`/${lng}${href}`}
@@ -29,5 +31,3 @@ const ServerLink = ({
     </Link>
   );
 };
-
-export default ServerLink;

@@ -1,4 +1,5 @@
-// styles
+"use client";
+
 import "./styles.css";
 
 // components

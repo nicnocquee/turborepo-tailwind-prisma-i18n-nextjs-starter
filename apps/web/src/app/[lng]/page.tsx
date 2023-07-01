@@ -1,9 +1,8 @@
-import { useTranslation } from "i18n";
-import Link from "i18n/link/server";
+import { useServerTranslation, ServerLink as Link } from "internationalization";
 import { Footer } from "./components/Footer";
 
 export default async function Page({ params: { lng } }) {
-  const { t } = await useTranslation(lng);
+  const { t } = await useServerTranslation(lng);
 
   return (
     <div className="flex flex-col">

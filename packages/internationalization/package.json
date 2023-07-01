@@ -1,0 +1,30 @@
+{
+  "name": "internationalization",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "files": [
+    "./src/**/*.ts*",
+    "./public/**/*"
+  ],
+  "private": true,
+  "dependencies": {
+    "accept-language": "^3.0.18",
+    "i18next": "^22.5.0",
+    "i18next-browser-languagedetector": "^7.0.2",
+    "i18next-resources-to-backend": "^1.1.4",
+    "next": "^13.4.1",
+    "react-i18next": "^12.3.1",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.9",
+    "dotenv-cli": "^7.2.1",
+    "eslint": "^7.32.0",
+    "eslint-config-custom": "workspace:*",
+    "postcss": "^8.4.21",
+    "react": "^18.2.0",
+    "tsconfig": "workspace:*",
+    "typescript": "^5.1.3"
+  }
+}
